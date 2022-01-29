@@ -9,9 +9,9 @@ import UIKit
 import RealmSwift
 
 class TaskListViewController: UITableViewController {
-
+    
+    // MARK: - Public Properties
     var taskLists: Results<TaskList>!
-    var currentTaskCount: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,8 @@ class TaskListViewController: UITableViewController {
         
         createTempData()
     }
-    
+        
+    // MARK: - Override Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -45,8 +46,17 @@ class TaskListViewController: UITableViewController {
         let taskList = taskLists[indexPath.row]
         content.text = taskList.name
         let currentTask = taskList.tasks.filter{ $0.isComplete == false }
-        content.secondaryText = "\(currentTask.count)"
+        
+        if currentTask.count == 0 {
+            cell.accessoryType = .checkmark
+            content.secondaryText = ""
+        } else {
+            cell.accessoryType = .none
+            content.secondaryText = "\(currentTask.count)"
+        }
+        
         cell.contentConfiguration = content
+        
         return cell
     }
     
@@ -84,13 +94,15 @@ class TaskListViewController: UITableViewController {
         guard let tasksVC = segue.destination as? TasksViewController else { return }
         let taskList = taskLists[indexPath.row]
         tasksVC.taskList = taskList
-        tasksVC.completion = { [weak self] value in
-            guard let self = self else { return }
-            self.currentTaskCount = value
-        }
     }
-
+    // MARK: - @IBOutlets
     @IBAction func sortingList(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            self.taskLists = self.taskLists.sorted(byKeyPath: "name", ascending: true)
+        } else {
+            self.taskLists = self.taskLists.sorted(byKeyPath: "date", ascending: true)
+        }
+        self.tableView.reloadData()
     }
     
     @objc private func  addButtonPressed() {
@@ -104,6 +116,7 @@ class TaskListViewController: UITableViewController {
     }
 }
 
+// MARK: - Extension
 extension TaskListViewController {
     
     private func showAlert(with taskList: TaskList? = nil, completion: (() -> Void)? = nil) {

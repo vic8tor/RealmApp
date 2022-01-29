@@ -71,6 +71,12 @@ class StorageManager {
         }
     }
     
+    func undo(_ task: Task) {
+        write {
+            task.setValue(false, forKey: "isComplete")
+        }
+    }
+    
     private func write(comletion: () -> Void) {
         do {
             try realm.write {
