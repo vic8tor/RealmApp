@@ -17,7 +17,7 @@
 		570D527427A5512700858B63 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D527327A5512700858B63 /* AlertController.swift */; };
 		570D527727A5515700858B63 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D527627A5515700858B63 /* TaskList.swift */; };
 		570D527A27A5517600858B63 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D527927A5517600858B63 /* StorageManager.swift */; };
-		570D527E27A5578300858B63 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D527D27A5578300858B63 /* DataManager.swift */; };
+		570D528127A581B700858B63 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D528027A581B700858B63 /* DataManager.swift */; };
 		A99FD7B213E3E22712B77F81 /* Pods_RealmApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60D937B5B6E927A95E8B142 /* Pods_RealmApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +35,7 @@
 		570D527327A5512700858B63 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		570D527627A5515700858B63 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		570D527927A5517600858B63 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		570D527D27A5578300858B63 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		570D528027A581B700858B63 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		897AC9B20DBCB3019231B965 /* Pods-RealmApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmApp.debug.xcconfig"; path = "Target Support Files/Pods-RealmApp/Pods-RealmApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A60D937B5B6E927A95E8B142 /* Pods_RealmApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -141,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				570D527927A5517600858B63 /* StorageManager.swift */,
-				570D527D27A5578300858B63 /* DataManager.swift */,
+				570D528027A581B700858B63 /* DataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -270,7 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				570D527727A5515700858B63 /* TaskList.swift in Sources */,
-				570D527E27A5578300858B63 /* DataManager.swift in Sources */,
+				570D528127A581B700858B63 /* DataManager.swift in Sources */,
 				570D527027A550F100858B63 /* TaskListViewController.swift in Sources */,
 				570D527227A5510200858B63 /* TaskViewController.swift in Sources */,
 				570D525B27A54C2F00858B63 /* AppDelegate.swift in Sources */,

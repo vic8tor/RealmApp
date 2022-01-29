@@ -11,6 +11,7 @@ import RealmSwift
 class TaskListViewController: UITableViewController {
 
     var taskLists: Results<TaskList>!
+    var currentTaskCount: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,8 @@ class TaskListViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
         let taskList = taskLists[indexPath.row]
         content.text = taskList.name
-        content.secondaryText = "\(taskList.tasks.count)"
+        let currentTask = taskList.tasks.filter{ $0.isComplete == false }
+        content.secondaryText = "\(currentTask.count)"
         cell.contentConfiguration = content
         return cell
     }
@@ -82,6 +84,10 @@ class TaskListViewController: UITableViewController {
         guard let tasksVC = segue.destination as? TasksViewController else { return }
         let taskList = taskLists[indexPath.row]
         tasksVC.taskList = taskList
+        tasksVC.completion = { [weak self] value in
+            guard let self = self else { return }
+            self.currentTaskCount = value
+        }
     }
 
     @IBAction func sortingList(_ sender: UISegmentedControl) {

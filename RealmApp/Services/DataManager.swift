@@ -2,7 +2,8 @@
 //  DataManager.swift
 //  RealmApp
 //
-//  Created by Victor on 29.01.2022.
+//  Created by Alexey Efimov on 08.10.2021.
+//  Copyright © 2021 Alexey Efimov. All rights reserved.
 //
 
 import Foundation
@@ -13,12 +14,10 @@ class DataManager {
     private init() {}
     
     func createTempData(completion: @escaping () -> Void) {
-        if !UserDefaults.standard.bool(forKey: "test") {
+        if !UserDefaults.standard.bool(forKey: "Buzz") {
             
             let shoppingList = TaskList()
             shoppingList.name = "Shopping List"
-            
-            let moviesList = TaskList(value: ["Movies List", Date(), [["Best film ever"],["The best of the best", "Must have", Date(), true]]])
             
             let milk = Task()
             milk.name = "Milk"
@@ -31,8 +30,8 @@ class DataManager {
             shoppingList.tasks.insert(contentsOf: [bread, apples], at: 0)
             
             DispatchQueue.main.async {
-                StorageManager.shared.save([shoppingList, moviesList])
-                UserDefaults.standard.set(true, forKey: "test")
+                StorageManager.shared.save([shoppingList])
+                UserDefaults.standard.set(true, forKey: "Buzz")
                 completion()
             }
         }

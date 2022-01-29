@@ -9,12 +9,15 @@ import UIKit
 import RealmSwift
 
 class TasksViewController: UITableViewController {
-    
+      
+    // MARK: - Private Properties
     var taskList: TaskList!
     
     private var currentTasks: Results<Task>!
     private var completedTasks: Results<Task>!
 
+    // MARK: - Override Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = taskList.name
@@ -56,9 +59,41 @@ class TasksViewController: UITableViewController {
     @objc private func addButtonPressed() {
         showAlert()
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let currentTask = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, completion in
+            StorageManager.shared.delete(currentTask)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            completion(true)
+        }
+        
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { _, _, completion in
+            self.showAlert(with: currentTask) {
+                tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+            completion(true)
+        }
+        
+        let doneAction = UIContextualAction(style: .normal, title: "Done") { _, _, completion in
+            StorageManager.shared.done(currentTask)
+            tableView.reloadData()
+            completion(true)
+        }
+        deleteAction.backgroundColor = .orange
+        editAction.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        
+        return UISwipeActionsConfiguration(actions: [editAction, deleteAction, doneAction])
+    }
 
 }
 
+// MARK: - Extension
 extension TasksViewController {
     private func showAlert(with task: Task? = nil, completion: (() -> Void)? = nil) {
         let title = task != nil ? "Edit Task" : "New Task"
@@ -66,8 +101,9 @@ extension TasksViewController {
         let alert = UIAlertController.createAlert(withTitle: title, andMessage: "What do you want to do?")
         
         alert.action(with: task) { newValue, note in
-            if let _ = task, let _ = completion {
-                // TODO - edit task
+            if let task = task, let completion = completion {
+                StorageManager.shared.edit(task, newTitle: newValue)
+                completion()
             } else {
                 self.saveTask(withName: newValue, andNote: note)
             }
