@@ -13,6 +13,11 @@
 		570D526227A54C2F00858B63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 570D526027A54C2F00858B63 /* Main.storyboard */; };
 		570D526427A54C3200858B63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 570D526327A54C3200858B63 /* Assets.xcassets */; };
 		570D526727A54C3200858B63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 570D526527A54C3200858B63 /* LaunchScreen.storyboard */; };
+		570D527027A550F100858B63 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D526F27A550F100858B63 /* TaskListViewController.swift */; };
+		570D527227A5510200858B63 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D527127A5510200858B63 /* TaskViewController.swift */; };
+		570D527427A5512700858B63 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D527327A5512700858B63 /* AlertController.swift */; };
+		570D527727A5515700858B63 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D527627A5515700858B63 /* TaskList.swift */; };
+		570D527A27A5517600858B63 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D527927A5517600858B63 /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		570D526327A54C3200858B63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		570D526627A54C3200858B63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		570D526827A54C3200858B63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		570D526F27A550F100858B63 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
+		570D527127A5510200858B63 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		570D527327A5512700858B63 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		570D527627A5515700858B63 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
+		570D527927A5517600858B63 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,44 @@
 		570D525927A54C2F00858B63 /* RealmApp */ = {
 			isa = PBXGroup;
 			children = (
-				570D525A27A54C2F00858B63 /* AppDelegate.swift */,
-				570D525C27A54C2F00858B63 /* SceneDelegate.swift */,
+				570D527527A5512E00858B63 /* ViewControllers */,
+				570D526E27A5506C00858B63 /* SupportFiles */,
 				570D525E27A54C2F00858B63 /* ViewController.swift */,
+				570D527827A5516200858B63 /* Models */,
 				570D526027A54C2F00858B63 /* Main.storyboard */,
 				570D526327A54C3200858B63 /* Assets.xcassets */,
 				570D526527A54C3200858B63 /* LaunchScreen.storyboard */,
-				570D526827A54C3200858B63 /* Info.plist */,
 			);
 			path = RealmApp;
+			sourceTree = "<group>";
+		};
+		570D526E27A5506C00858B63 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				570D525A27A54C2F00858B63 /* AppDelegate.swift */,
+				570D525C27A54C2F00858B63 /* SceneDelegate.swift */,
+				570D526827A54C3200858B63 /* Info.plist */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		570D527527A5512E00858B63 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				570D526F27A550F100858B63 /* TaskListViewController.swift */,
+				570D527127A5510200858B63 /* TaskViewController.swift */,
+				570D527327A5512700858B63 /* AlertController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		570D527827A5516200858B63 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				570D527627A5515700858B63 /* TaskList.swift */,
+				570D527927A5517600858B63 /* StorageManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +177,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570D527727A5515700858B63 /* TaskList.swift in Sources */,
 				570D525F27A54C2F00858B63 /* ViewController.swift in Sources */,
+				570D527027A550F100858B63 /* TaskListViewController.swift in Sources */,
+				570D527227A5510200858B63 /* TaskViewController.swift in Sources */,
 				570D525B27A54C2F00858B63 /* AppDelegate.swift in Sources */,
+				570D527427A5512700858B63 /* AlertController.swift in Sources */,
 				570D525D27A54C2F00858B63 /* SceneDelegate.swift in Sources */,
+				570D527A27A5517600858B63 /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +334,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RealmApp/Info.plist;
+				INFOPLIST_FILE = RealmApp/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,7 +361,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RealmApp/Info.plist;
+				INFOPLIST_FILE = RealmApp/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
