@@ -84,22 +84,14 @@ class TasksViewController: UITableViewController {
             tableView.reloadData()
             completion(true)
         }
-        
-        let undoneAction = UIContextualAction(style: .normal, title: "Undone") { _, _, completion in
-            StorageManager.shared.undo(currentTask)
-            tableView.reloadData()
-            completion(true)
-            }
-        
+
         deleteAction.backgroundColor = .red
         editAction.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
         
         editAction.image = UIImage(systemName: "square.and.pencil")
         deleteAction.image = UIImage(systemName: "trash.fill")
-        
-        let actions = indexPath.section == 0 ? [doneAction, deleteAction, editAction] : [undoneAction, deleteAction, editAction]
-        
-        return UISwipeActionsConfiguration(actions: actions)
+    
+        return UISwipeActionsConfiguration(actions: [doneAction, deleteAction, editAction] )
     }
     
     private func alertAction(style: UIContextualAction.Style, and title: String, completion: () -> ()) -> UIContextualAction {
@@ -119,7 +111,7 @@ extension TasksViewController {
         
         alert.action(with: task) { newValue, note in
             if let task = task, let completion = completion {
-                StorageManager.shared.edit(task, newTitle: newValue)
+                StorageManager.shared.rename(task, newTitle: newValue)
                 completion()
             } else {
                 self.saveTask(withName: newValue, andNote: note)
